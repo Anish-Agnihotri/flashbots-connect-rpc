@@ -5,7 +5,7 @@ import { InjectedConnector } from "@web3-react/injected-connector"; // MetaMask
 
 export default function Home() {
   // Web3React setup
-  const { active, account, activate } = useWeb3React();
+  const { active, account, activate, library } = useWeb3React();
 
   /**
    * Connect metamask
@@ -22,21 +22,18 @@ export default function Home() {
    * Add Flashbots RPC to MetaMask
    */
   const addFlashbotsRPC = async () => {
-    await window.ethereum.request({
-      method: "wallet_addEthereumChain",
-      params: [
-        {
-          chainId: "0x1",
-          chainName: "Flashbots RPC",
-          rpcUrls: ["https://rpc.flashbots.net"],
-          nativeCurrency: {
-            name: "ETH",
-            symbol: "ETH",
-            decimals: 18,
-          },
+    await library.send("wallet_addEthereumChain", [
+      {
+        chainId: "0x1",
+        chainName: "Flashbots RPC",
+        rpcUrls: ["https://rpc.flashbots.net"],
+        nativeCurrency: {
+          name: "ETH",
+          symbol: "ETH",
+          decimals: 18,
         },
-      ],
-    });
+      },
+    ]);
   };
 
   return (
@@ -82,6 +79,37 @@ export default function Home() {
 function Meta() {
   return (
     <Head>
+      {/* Primary meta */}
+      <title>Add Flashbots RPC to MetaMask</title>
+      <meta name="title" content="Add Flashbots RPC to MetaMask" />
+      <meta
+        name="description"
+        content="Two clicks to add the Flashbots RPC endpoint to MetaMask, avoiding sandwich bots and reverting transactions."
+      />
+
+      {/* OG + Facebook */}
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://flashbotsrpc.com" />
+      <meta property="og:title" content="Add Flashbots RPC to MetaMask" />
+      <meta
+        property="og:description"
+        content="Two clicks to add the Flashbots RPC endpoint to MetaMask, avoiding sandwich bots and reverting transactions."
+      />
+      <meta property="og:image" content="https://flashbotsrpc.com/meta.png" />
+
+      {/* Twitter */}
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:url" content="https://flashbotsrpc.com" />
+      <meta property="twitter:title" content="Add Flashbots RPC to MetaMask" />
+      <meta
+        property="twitter:description"
+        content="Two clicks to add the Flashbots RPC endpoint to MetaMask, avoiding sandwich bots and reverting transactions."
+      />
+      <meta
+        property="twitter:image"
+        content="https://flashbotsrpc.com/meta.png"
+      />
+
       {/* Google Fonts */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link
