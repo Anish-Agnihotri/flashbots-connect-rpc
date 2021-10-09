@@ -1,0 +1,55 @@
+// Center
+.home {
+  max-width: 800px;
+  padding: 40px;
+  margin: 0px auto;
+}
+
+// Top text + image
+.home__cta {
+  text-align: center;
+
+  > h1 {
+    margin-top: 0px;
+  }
+
+  > p {
+    font-size: 18px;
+    line-height: 28px;
+    max-width: 600px;
+    margin: 0px auto;
+
+    > a {
+      color: inherit;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+// Connect buttons
+.home__connect {
+  padding: 20px 0px;
+  text-align: center;
+
+  > p {
+    word-break: break-all;
+  }
+
+  > button {
+    font-size: 18px;
+    font-family: "Inter", sans-serif;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: rgb(255, 201, 58);
+    border: 2px solid black;
+    transition: 50ms ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
